@@ -1,132 +1,230 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Package, TrendingUp, ShieldCheck, BarChart3, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { 
+  ArrowRight, 
+  CheckCircle, 
+  BarChart3, 
+  Box, 
+  ShieldCheck, 
+  Zap, 
+  Layers 
+} from 'lucide-react';
 
-export default function LandingPage() {
+const LandingPage = () => {
   return (
-    <div className="min-h-screen bg-white">
-      {/* 1. NAVBAR */}
-      <nav className="fixed w-full bg-white/80 backdrop-blur-md border-b border-gray-100 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16 items-center">
-            <div className="flex items-center gap-2">
-              <div className="bg-blue-600 p-2 rounded-lg">
-                <Package className="text-white h-6 w-6" />
-              </div>
-              <span className="text-xl font-bold text-slate-900">Zeta Inventory</span>
+    <div className="min-h-screen bg-white text-gray-800 font-sans">
+      
+      {/* --- NAVBAR --- */}
+      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+          <div className="flex items-center gap-2 font-bold text-2xl text-primary">
+            <div className="bg-primary text-white p-1.5 rounded-lg">
+              <Box size={24} strokeWidth={3} />
             </div>
-            <div>
-              <Link 
-                to="/dashboard" 
-                className="bg-slate-900 text-white px-5 py-2.5 rounded-full font-medium hover:bg-slate-800 transition-all flex items-center gap-2"
-              >
-                Masuk Sistem <ArrowRight size={18} />
-              </Link>
-            </div>
+            <span>InvManage</span>
+          </div>
+
+          <div className="hidden md:flex gap-8 text-sm font-medium text-gray-600">
+            <a href="#features" className="hover:text-primary transition">Fitur</a>
+            <a href="#benefits" className="hover:text-primary transition">Keunggulan</a>
+            <a href="#pricing" className="hover:text-primary transition">Harga</a>
+          </div>
+
+          <div className="flex gap-4">
+            <Link 
+              to="/login" 
+              className="px-6 py-2.5 rounded-full text-sm font-bold text-white bg-primary hover:bg-blue-800 transition shadow-lg shadow-blue-500/30"
+            >
+              Masuk / Daftar
+            </Link>
           </div>
         </div>
       </nav>
 
-      {/* 2. HERO SECTION */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
-        <span className="text-blue-600 font-semibold tracking-wide uppercase text-sm bg-blue-50 px-3 py-1 rounded-full border border-blue-100">
-          Sistem Manajemen Stok Terintegrasi
-        </span>
-        <h1 className="mt-6 text-5xl sm:text-6xl font-extrabold text-slate-900 leading-tight">
-          Kelola Stok & Keuangan <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
-            Tanpa Rumit
-          </span>
-        </h1>
-        <p className="mt-6 text-xl text-slate-600 max-w-2xl mx-auto">
-          Solusi lengkap untuk mencatat barang masuk, keluar, stock opname, hingga laporan laba rugi secara real-time.
-        </p>
-        
-        <div className="mt-10 flex justify-center gap-4">
-          <Link to="/dashboard" className="bg-blue-600 text-white px-8 py-4 rounded-xl text-lg font-bold shadow-lg shadow-blue-200 hover:shadow-xl hover:-translate-y-1 transition-all">
-            Coba Demo Gratis
-          </Link>
-          <button className="px-8 py-4 rounded-xl text-lg font-semibold text-slate-700 hover:bg-slate-50 border border-slate-200 transition-all">
-            Pelajari Fitur
-          </button>
-        </div>
-      </section>
+      {/* --- HERO SECTION --- */}
+      <header className="relative pt-16 pb-32 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+          
+          {/* Text Content */}
+          <div className="space-y-8 relative z-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-primary text-xs font-bold uppercase tracking-wide">
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+              Versi 2.0 Telah Rilis
+            </div>
+            <h1 className="text-5xl md:text-6xl font-extrabold leading-tight text-gray-900">
+              Kelola Stok Barang <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">
+                Tanpa Hambatan
+              </span>
+            </h1>
+            <p className="text-lg text-gray-600 max-w-lg leading-relaxed">
+              Platform manajemen inventori all-in-one untuk memantau stok, analisis penjualan, dan laporan keuangan secara real-time.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link to="/login" className="flex items-center justify-center gap-2 px-8 py-4 bg-primary text-white rounded-xl font-bold hover:bg-blue-800 transition shadow-xl hover:-translate-y-1">
+                Mulai Sekarang
+                <ArrowRight size={20} />
+              </Link>
+              <a href="#features" className="flex items-center justify-center gap-2 px-8 py-4 bg-white border border-gray-200 text-gray-700 rounded-xl font-bold hover:bg-gray-50 transition">
+                Pelajari Fitur
+              </a>
+            </div>
 
-      {/* 3. FEATURES SECTION (Berdasarkan PDF) */}
-      <section className="py-20 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-slate-900">Fitur Unggulan</h2>
-            <p className="mt-4 text-slate-600">Didesain khusus untuk kebutuhan operasional harian Anda.</p>
+            <div className="pt-8 flex items-center gap-6 text-sm text-gray-500 font-medium">
+              <div className="flex items-center gap-2">
+                <CheckCircle size={16} className="text-green-500" /> Free Trial 14 Hari
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle size={16} className="text-green-500" /> Tanpa Kartu Kredit
+              </div>
+            </div>
+          </div>
+
+          {/* Hero Image / Dashboard Preview */}
+          <div className="relative">
+            {/* Decorative Blobs */}
+            <div className="absolute -top-10 -right-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+            <div className="absolute -bottom-10 -left-10 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+            
+            <div className="relative bg-white rounded-2xl shadow-2xl border border-gray-100 p-2 overflow-hidden transform rotate-2 hover:rotate-0 transition duration-500">
+              <img 
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2426&q=80" 
+                alt="Dashboard Preview" 
+                className="rounded-xl w-full"
+              />
+              {/* Floating Badge */}
+              <div className="absolute bottom-6 left-6 bg-white p-4 rounded-lg shadow-lg border border-gray-100 flex items-center gap-3">
+                <div className="p-2 bg-green-100 rounded-full text-green-600">
+                  <BarChart3 size={20} />
+                </div>
+                <div>
+                  <p className="text-xs text-gray-500">Total Profit</p>
+                  <p className="text-lg font-bold text-gray-800">+24%</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* --- FEATURES SECTION --- */}
+      <section id="features" className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Fitur Lengkap untuk Bisnis Anda</h2>
+            <p className="text-gray-600 text-lg">Semua yang Anda butuhkan untuk mengelola gudang dan toko ada di satu tempat.</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {/* Card 1: Inventory */}
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
-                <Package className="text-blue-600" />
+            {/* Feature Cards */}
+            {[
+              {
+                icon: <Box size={32} />,
+                title: "Manajemen Stok",
+                desc: "Pantau stok masuk dan keluar secara akurat dengan notifikasi stok menipis otomatis.",
+                color: "text-blue-600",
+                bg: "bg-blue-50"
+              },
+              {
+                icon: <BarChart3 size={32} />,
+                title: "Laporan Real-time",
+                desc: "Analisis grafik penjualan, keuntungan, dan performa produk dalam satu dashboard.",
+                color: "text-purple-600",
+                bg: "bg-purple-50"
+              },
+              {
+                icon: <Zap size={32} />,
+                title: "Transaksi Cepat",
+                desc: "Catat pembelian dan penjualan dengan antarmuka yang cepat dan mudah digunakan.",
+                color: "text-yellow-600",
+                bg: "bg-yellow-50"
+              },
+              {
+                icon: <ShieldCheck size={32} />,
+                title: "Keamanan Data",
+                desc: "Data tersimpan aman di cloud dengan enkripsi tingkat tinggi dan backup harian.",
+                color: "text-green-600",
+                bg: "bg-green-50"
+              },
+              {
+                icon: <Layers size={32} />,
+                title: "Multi-Gudang",
+                desc: "Kelola stok di berbagai lokasi gudang atau cabang toko yang berbeda.",
+                color: "text-red-600",
+                bg: "bg-red-50"
+              },
+              {
+                icon: <CheckCircle size={32} />,
+                title: "Stock Opname",
+                desc: "Fitur khusus untuk melakukan penyesuaian stok fisik dan sistem dengan mudah.",
+                color: "text-cyan-600",
+                bg: "bg-cyan-50"
+              }
+            ].map((feature, idx) => (
+              <div key={idx} className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition duration-300 group">
+                <div className={`w-14 h-14 ${feature.bg} ${feature.color} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition`}>
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {feature.desc}
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Manajemen Inventory</h3>
-              <p className="text-slate-600 leading-relaxed mb-4">
-                Pantau saldo awal, barang masuk, dan barang keluar secara akurat. Termasuk fitur Stock Opname.
-              </p>
-              <ul className="space-y-2">
-                <li className="flex items-center gap-2 text-sm text-slate-500">
-                  <CheckCircle2 size={16} className="text-green-500" /> List Item & Saldo
-                </li>
-                <li className="flex items-center gap-2 text-sm text-slate-500">
-                  <CheckCircle2 size={16} className="text-green-500" /> Stock Opname
-                </li>
-              </ul>
-            </div>
-
-            {/* Card 2: Transaksi */}
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all">
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
-                <TrendingUp className="text-purple-600" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Pencatatan Transaksi</h3>
-              <p className="text-slate-600 leading-relaxed mb-4">
-                Input user yang mudah untuk belanja modal dan penjualan harian agar data selalu update.
-              </p>
-              <ul className="space-y-2">
-                <li className="flex items-center gap-2 text-sm text-slate-500">
-                  <CheckCircle2 size={16} className="text-green-500" /> Input Belanja (Modal)
-                </li>
-                <li className="flex items-center gap-2 text-sm text-slate-500">
-                  <CheckCircle2 size={16} className="text-green-500" /> Input Penjualan
-                </li>
-              </ul>
-            </div>
-
-            {/* Card 3: Laporan */}
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all">
-              <div className="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center mb-6">
-                <BarChart3 className="text-emerald-600" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Laporan & Analisa</h3>
-              <p className="text-slate-600 leading-relaxed mb-4">
-                Otomatisasi perhitungan laba rugi dari selisih modal dan penjualan. Data transparan.
-              </p>
-              <ul className="space-y-2">
-                <li className="flex items-center gap-2 text-sm text-slate-500">
-                  <CheckCircle2 size={16} className="text-green-500" /> Laporan Laba Rugi
-                </li>
-                <li className="flex items-center gap-2 text-sm text-slate-500">
-                  <CheckCircle2 size={16} className="text-green-500" /> Analisa Modal
-                </li>
-              </ul>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 4. FOOTER */}
-      <footer className="bg-white border-t border-slate-100 py-12">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <p className="text-slate-400">© 2024 PT Zeta Prakarsa Mandiri. All rights reserved.</p>
+      {/* --- CTA SECTION --- */}
+      <section className="py-20 bg-primary">
+        <div className="max-w-4xl mx-auto px-6 text-center text-white">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Siap Mengoptimalkan Bisnis Anda?</h2>
+          <p className="text-blue-100 text-lg mb-10">Bergabunglah dengan ribuan pemilik bisnis yang telah beralih ke InvManage.</p>
+          <Link 
+            to="/login"
+            className="inline-block px-10 py-4 bg-white text-primary font-bold rounded-xl shadow-lg hover:bg-gray-100 transition transform hover:scale-105"
+          >
+            Coba Gratis Sekarang
+          </Link>
+        </div>
+      </section>
+
+      {/* --- FOOTER --- */}
+      <footer className="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-8">
+          <div className="col-span-1 md:col-span-2">
+            <div className="flex items-center gap-2 font-bold text-2xl text-white mb-4">
+              <Box size={24} />
+              <span>InvManage</span>
+            </div>
+            <p className="max-w-xs text-sm">
+              Solusi terbaik untuk manajemen inventori modern. Cepat, Aman, dan Terpercaya.
+            </p>
+          </div>
+          <div>
+            <h4 className="text-white font-bold mb-4">Produk</h4>
+            <ul className="space-y-2 text-sm">
+              <li><a href="#" className="hover:text-white">Fitur</a></li>
+              <li><a href="#" className="hover:text-white">Harga</a></li>
+              <li><a href="#" className="hover:text-white">Studi Kasus</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-white font-bold mb-4">Perusahaan</h4>
+            <ul className="space-y-2 text-sm">
+              <li><a href="#" className="hover:text-white">Tentang Kami</a></li>
+              <li><a href="#" className="hover:text-white">Kontak</a></li>
+              <li><a href="#" className="hover:text-white">Karir</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="max-w-7xl mx-auto px-6 mt-12 pt-8 border-t border-gray-800 text-sm text-center">
+          &copy; {new Date().getFullYear()} InvManage System. All rights reserved.
         </div>
       </footer>
     </div>
   );
-}
+};
+
+export default LandingPage;
